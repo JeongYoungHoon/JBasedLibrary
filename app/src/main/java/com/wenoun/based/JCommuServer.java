@@ -40,7 +40,7 @@ public class JCommuServer extends AsyncTask<String,Void,Message> {
      * Override this method to perform a computation on a background thread. The
      * specified parameters are the parameters passed to {@link #execute}
      * by the caller of this task.
-     * <p/>
+     *
      * This method can call {@link #publishProgress} to publish updates
      * on the UI thread.
      *
@@ -105,7 +105,7 @@ public class JCommuServer extends AsyncTask<String,Void,Message> {
     /**
      * <p>Runs on the UI thread after {@link #doInBackground}. The
      * specified result is the value returned by {@link #doInBackground}.</p>
-     * <p/>
+     *
      * <p>This method won't be invoked if the task was cancelled.</p>
      *
      * @param msg The result of the operation computed by {@link #doInBackground}.

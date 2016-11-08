@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="JFloatingActionButton">
+        <attr name="tintColor" format="reference|color" />
+        <attr name="scaleType" format="reference|enum" >
+            <enum name="normal" value="0"/>
+            <enum name="mini" value="1"/>
+            <enum name="big" value="2"/>
+        </attr>
+        <attr name="imgPadding" format="reference|dimension"/>
+        <!--<attr name="text" format="reference|string" />-->
+        <!--<attr name="textColor" format="reference|integer" />-->
+    </declare-styleable>
+    <declare-styleable name="JIconButton">
+        <attr name="iconSrc" format="reference"/>
+        <attr name="backgroundColor" format="color|integer"/>
+        <attr name="textColor" format="color|integer"/>
+        <attr name="labelTextSize" format="reference|dimension"/>
+        <attr name="text" format="reference|string"/>
+        <attr name="gabSize" format="dimension"/>
+        <attr name="iconWidth" format="dimension"/>
+        <attr name="iconHeight" format="dimension"/>
+        <attr name="iconPadding" format="dimension"/>
+    </declare-styleable>
+    <declare-styleable name="LevelView">
+        <attr name="level" format="integer"/>
+    </declare-styleable>
+    <declare-styleable name="ProfileCustomView">
+        <attr name="leftLabel" format="string" />
+        <attr name="rightLabel" format="string" />
+        <attr name="uneditable" format="boolean" />
+        <attr name="textSize" format="reference|dimension"/>
+        <attr name="badgeText" format="string"/>
+        <attr name="badgeUsable" format="boolean"/>
+    </declare-styleable>
+</resources>

@@ -40,6 +40,7 @@ public final class JLog{
     /**
      * Send a {@link #VERBOSE} log message.
      * @param msg The message you would like logged.
+     * @return The number of bytes written.
      */
     public static int v(String msg) {
         return Log.v(TAG,msg);
@@ -49,6 +50,7 @@ public final class JLog{
      * Send a {@link #VERBOSE} log message and log the exception.
      * @param msg The message you would like logged.
      * @param tr An exception to log
+     * @return The number of bytes written.
      */
     public static int v(String msg, Throwable tr) {
         return Log.v(TAG,msg,tr);
@@ -66,6 +68,7 @@ public final class JLog{
      * Send a {@link #DEBUG} log message and log the exception.
      * @param msg The message you would like logged.
      * @param tr An exception to log
+     * @return The number of bytes written.
      */
     public static int d(String msg, Throwable tr) {
         return Log.d(TAG,msg,tr);
@@ -83,6 +86,7 @@ public final class JLog{
      * Send a {@link #INFO} log message and log the exception.
      * @param msg The message you would like logged.
      * @param tr An exception to log
+     * @return The number of bytes written.
      */
     public static int i(String msg, Throwable tr) {
         return Log.i(TAG,msg,tr);
@@ -91,6 +95,7 @@ public final class JLog{
     /**
      * Send a {@link #WARN} log message.
      * @param msg The message you would like logged.
+     * @return The number of bytes written.
      */
     public static int w(String msg) {
         return Log.w(TAG,msg);
@@ -100,6 +105,7 @@ public final class JLog{
      * Send a {@link #WARN} log message and log the exception.
      * @param msg The message you would like logged.
      * @param tr An exception to log
+     * @return The number of bytes written.
      */
     public static int w(String msg, Throwable tr) {
         return Log.w(TAG,msg,tr);
@@ -118,6 +124,7 @@ public final class JLog{
     /**
      * Send an {@link #ERROR} log message.
      * @param msg The message you would like logged.
+     * @return The number of bytes written.
      */
     public static int e(String msg) {
         return Log.e(TAG,msg);
@@ -127,6 +134,7 @@ public final class JLog{
      * Send a {@link #ERROR} log message and log the exception.
      * @param msg The message you would like logged.
      * @param tr An exception to log
+     * @return The number of bytes written.
      */
     public static int e(String msg, Throwable tr) {
         return Log.e(TAG,msg,tr);
