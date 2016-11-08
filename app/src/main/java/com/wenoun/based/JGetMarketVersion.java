@@ -179,7 +179,6 @@ public class JGetMarketVersion extends AsyncTask<String, Void, Message> {
     /**
      * <p>Runs on the UI thread after {@link #doInBackground}. The
      * specified result is the value returned by {@link #doInBackground}.</p>
-     * <p/>
      * <p>This method won't be invoked if the task was cancelled.</p>
      *
      * @param msg The result of the operation computed by {@link #doInBackground}.

@@ -41,6 +41,7 @@ public abstract class JFragment extends Fragment {
      * @param resId Layout's Resource Id e.g. R.layout.fragment_xx
      * @param inflater onCreateView param's LayoutInflater inflater
      * @param container onCreateView param's ViewGroup container
+     * @return void
      */
     public void setRoot(int resId, LayoutInflater inflater, ViewGroup container){
         try {
@@ -76,6 +77,7 @@ public abstract class JFragment extends Fragment {
      * Easy to setOnClickListener Instead of root.findViewById(viewId).setOnClickListner
      * @param viewId apply View's id
      * @param listener OnClickListener
+     * @return void
      */
     protected void setOnClickListener(int viewId, View.OnClickListener listener){
         findViewById(viewId).setOnClickListener(listener);

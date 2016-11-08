@@ -59,6 +59,7 @@ public final class JLog{
     /**
      * Send a {@link #DEBUG} log message.
      * @param msg The message you would like logged.
+     * @return The number of bytes written.
      */
     public static int d(String msg) {
         return Log.d(TAG,msg);
