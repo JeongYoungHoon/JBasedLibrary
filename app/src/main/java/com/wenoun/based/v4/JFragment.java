@@ -53,6 +53,8 @@ public abstract class JFragment extends Fragment {
 
     /**
      * When you override this method, Must first call setRoot method
+     * @param inflater onCreateView param's LayoutInflater inflater
+     * @param container onCreateView param's ViewGroup container
      */
     protected abstract void onCreateFragment(LayoutInflater inflater, ViewGroup container);
 
