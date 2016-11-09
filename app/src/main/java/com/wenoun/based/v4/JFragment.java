@@ -103,7 +103,7 @@ public abstract class JFragment extends Fragment {
     }
 
     public void startAct(Intent intent,boolean isFinish){
-        startAct(intent);
+        startActivity(intent);
         if(isFinish)
             parentAct.finish();
     }
