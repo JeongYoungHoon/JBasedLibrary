@@ -14,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import com.tsengvn.typekit.TypekitContextWrapper;
+
 
 /**
  * Created by JeyHoon on 16. 6. 19..
@@ -28,10 +30,10 @@ public class JActivity extends AppCompatActivity {
         ctx=this;
         getValuesByIntent(getIntent());
     }
-//    @Override
-//    protected void attachBaseContext(Context newBase) {
-//        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
-//    }
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
+    }
 
     /**
      * Get values By Intent Method

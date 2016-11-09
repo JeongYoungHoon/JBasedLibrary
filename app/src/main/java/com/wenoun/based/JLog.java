@@ -117,6 +117,7 @@ public final class JLog{
      * @param tag Used to identify the source of a log message.  It usually identifies
      *        the class or activity where the log call occurs.
      * @param tr An exception to log
+     * @return The number of bytes written.
      */
     public static int w(Throwable tr) {
         return Log.w(TAG,tr);

@@ -4,13 +4,13 @@ publish {
     userOrg = 'jeyechoo'
     groupId = 'com.wenoun'
     artifactId = 'JBasedLibrary'
-    publishVersion = '1.1.1'
+    publishVersion = '1.2.0'
     desc = ''
     website = 'https://github.com/JeongYoungHoon/TansanLibrary'
     issueTracker = "${website}/issues"
     repository = "${website}.git"
 }
-
+// ./gradlew clean build bintrayUpload -PbintrayUser=jeyechoo -PbintrayKey=7b5360461ef7851132f69e9875599942d6f529ff -PdryRun=false
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.3"
@@ -29,7 +29,11 @@ android {
         }
     }
 }
-
+repositories {
+    maven {
+        url "https://jitpack.io"
+    }
+}
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 //    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -37,4 +41,5 @@ dependencies {
 //    })
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.tsengvn:typekit:1.0.1'
 }
