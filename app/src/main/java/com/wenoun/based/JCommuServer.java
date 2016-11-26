@@ -17,12 +17,12 @@ import java.net.URLEncoder;
 /**
  * Created by JeyHoon on 16. 5. 22..
  */
-public class JCommuServer extends AsyncTask<String,Void,Message> {
+public class JCommuServer extends AsyncTask<String, Void, Message> {
 
-    protected String url="";
+    protected String url = "";
     public static final int FAILED = OnCommuListener.FAILED;
     public static final int SUCCESS = OnCommuListener.SUCCESS;
-    private Dialog progressDialog=null;
+    private Dialog progressDialog = null;
 
     /**
      * Runs on the UI thread before {@link #doInBackground}.
@@ -40,7 +40,7 @@ public class JCommuServer extends AsyncTask<String,Void,Message> {
      * Override this method to perform a computation on a background thread. The
      * specified parameters are the parameters passed to {@link #execute}
      * by the caller of this task.
-     *
+     * <p>
      * This method can call {@link #publishProgress} to publish updates
      * on the UI thread.
      *
@@ -78,19 +78,18 @@ public class JCommuServer extends AsyncTask<String,Void,Message> {
             }//if
 
 //            Message msg = new Message();
-            msg=handler.obtainMessage();
+            msg = handler.obtainMessage();
             msg.what = SUCCESS; //성공
             msg.obj = builder.toString(); //가져온 String Data를 저장
-
 
 
         } catch (Exception e) {
             e.printStackTrace();
             // TODO Auto-generated catch block
-            if(null!=e.getMessage()) {
+            if (null != e.getMessage()) {
                 Log.e("Test,post 전송중 에러!", e.getMessage());
             }
-            msg=handler.obtainMessage();
+            msg = handler.obtainMessage();
             msg.what = FAILED; //실패
             msg.obj = "No response.";
             handler.sendMessage(msg);
@@ -105,7 +104,6 @@ public class JCommuServer extends AsyncTask<String,Void,Message> {
     /**
      * <p>Runs on the UI thread after {@link #doInBackground}. The
      * specified result is the value returned by {@link #doInBackground}.</p>
-     *
      * <p>This method won't be invoked if the task was cancelled.</p>
      *
      * @param msg The result of the operation computed by {@link #doInBackground}.
@@ -116,7 +114,7 @@ public class JCommuServer extends AsyncTask<String,Void,Message> {
     @Override
     protected void onPostExecute(Message msg) {
 //        super.onPostExecute(object);
-        final Message m=new Message();
+        final Message m = new Message();
         m.copyFrom(msg);
         dismissProgressDialog();
         handler.sendMessage(m);
@@ -152,15 +150,15 @@ public class JCommuServer extends AsyncTask<String,Void,Message> {
 //                        Log.d("Test,CommuServer",jsonStr1);
                         JSONObject jsonObj = new JSONObject(jsonStr1);
 //                        String result_msg = jsonObj.getString("result");
-                        int resultCode=jsonObj.getInt("result");
-                        if(resultCode==SUCCESS) {
+                        int resultCode = jsonObj.getInt("result");
+                        if (resultCode == SUCCESS) {
                             sendSuccess(jsonObj);
-                        }else if(resultCode==FAILED){
-                            String error=jsonObj.getString("error");
-                            String hint=jsonObj.getString("hint");
-                            sendFailed(error,hint);
+                        } else if (resultCode == FAILED) {
+                            String error = jsonObj.getString("error");
+                            String hint = jsonObj.getString("hint");
+                            sendFailed(error, hint);
                         } else {
-                            sendFailed("ERROR#999","HTML Error");
+                            sendFailed("ERROR#999", "HTML Error");
 
                         }
                         // JSONArray 객체 얻어오기
@@ -179,53 +177,63 @@ public class JCommuServer extends AsyncTask<String,Void,Message> {
         }
     };
 
-    protected JCommuServer(){}
+    protected JCommuServer() {
+    }
 
     public JCommuServer(String url, OnCommuListener checkHandler) {
         this.checkHandler = checkHandler;
         this.url = url;
     }
+
     public JCommuServer(String url, OnCommuListener checkHandler, JSONObject obj) {
-        this(url,checkHandler);
+        this(url, checkHandler);
         setParam(obj);
     }
-    public JCommuServer setParam(JSONObject obj){
-        String $value=obj.toString();
-        addParam("json",$value,"UTF-8");
+
+    public JCommuServer setParam(JSONObject obj) {
+        String $value = obj.toString();
+        addParam("json", $value, "UTF-8");
 //        Log.d("Test,CommuServer",$value);
         return this;
     }
-    public JCommuServer addParam(String key, String value){
-        this.url=this.url+"&"+key+"="+value;
+
+    public JCommuServer addParam(String key, String value) {
+        this.url = this.url + "&" + key + "=" + value;
         return this;
     }
-    public JCommuServer addParam(String key, boolean value){
-        this.url=this.url+"&"+key+"="+value;
+
+    public JCommuServer addParam(String key, boolean value) {
+        this.url = this.url + "&" + key + "=" + value;
         return this;
     }
-    public JCommuServer addParam(String key, int value){
-        this.url=this.url+"&"+key+"="+String.valueOf(value);
+
+    public JCommuServer addParam(String key, int value) {
+        this.url = this.url + "&" + key + "=" + String.valueOf(value);
         return this;
     }
-    public JCommuServer addParam(String key, long value){
-        this.url=this.url+"&"+key+"="+String.valueOf(value);
+
+    public JCommuServer addParam(String key, long value) {
+        this.url = this.url + "&" + key + "=" + String.valueOf(value);
         return this;
     }
-    public JCommuServer addParam(String key, float value){
-        this.url=this.url+"&"+key+"="+String.valueOf(value);
+
+    public JCommuServer addParam(String key, float value) {
+        this.url = this.url + "&" + key + "=" + String.valueOf(value);
         return this;
     }
-    public JCommuServer addParamUTF8(String key, String value){
-        return addParam(key,value,"UTF-8");
+
+    public JCommuServer addParamUTF8(String key, String value) {
+        return addParam(key, value, "UTF-8");
     }
-    public JCommuServer addParam(String key, String $value, String charSet){
-        String value=$value;
-        try{
-            value=URLEncoder.encode(value,charSet);
-        }catch(Exception e){
-            value=$value;
+
+    public JCommuServer addParam(String key, String $value, String charSet) {
+        String value = $value;
+        try {
+            value = URLEncoder.encode(value, charSet);
+        } catch (Exception e) {
+            value = $value;
         }
-        this.url=this.url+"&"+key+"="+value;
+        this.url = this.url + "&" + key + "=" + value;
         return this;
     }
 //
@@ -245,33 +253,44 @@ public class JCommuServer extends AsyncTask<String,Void,Message> {
             checkHandler.onSuccess(obj);
         }
     }
+
     private void sendFailed(String error, String hint) {
         if (null != checkHandler) {
-            checkHandler.onFailed(new JError(error,hint));
+            checkHandler.onFailed(new JError(error, hint));
         }
     }
-    public AsyncTask<String,Void,Message> run(String... params){
-        return execute(params);
-    }
-    public AsyncTask<String,Void,Message> start(String... params){
+
+    public AsyncTask<String, Void, Message> run(String... params) {
         return execute(params);
     }
 
-    public void showProgressDialog(){
+    public AsyncTask<String, Void, Message> start(String... params) {
+        return execute(params);
+    }
+
+    public void showProgressDialog() {
 //        Log("showProgressDialog");
         try {
-            if (null == progressDialog)
-            if (!progressDialog.isShowing())
-                progressDialog.show();
-        }catch(Exception e){e.printStackTrace();}
+            if (null != progressDialog)
+                if (!progressDialog.isShowing())
+                    progressDialog.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-    public void dismissProgressDialog(){
+
+    public void dismissProgressDialog() {
 //        Log("dismissProgressDialog");
         try {
             if (null != progressDialog)
                 progressDialog.dismiss();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public JCommuServer setProgressDialog(final Dialog progressDialog){
+        this.progressDialog=progressDialog;
+        return this;
     }
 }

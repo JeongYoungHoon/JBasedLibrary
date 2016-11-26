@@ -1,6 +1,7 @@
 package com.wenoun.based;
 
 import android.content.Context;
+import android.os.Build;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -37,6 +38,23 @@ public class JUtil {
                 return true;
         }
         return false;
+    }
+    /**
+     * Over Api Version 23.
+     *
+     * @return true is Over 21, false is Under 21.
+     */
+    public static boolean isOverM() {
+        return Build.VERSION.SDK_INT >= 23;
+    }
+
+    /**
+     * Over Api Version 21.
+     *
+     * @return true is Over 21, false is Under 21.
+     */
+    public static boolean isOverL() {
+        return Build.VERSION.SDK_INT >= 21;
     }
 
 }

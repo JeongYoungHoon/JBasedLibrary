@@ -113,10 +113,8 @@ public final class JLog{
         return Log.w(TAG,msg,tr);
     }
 
-    /*
+    /**
      * Send a {@link #WARN} log message and log the exception.
-     * @param tag Used to identify the source of a log message.  It usually identifies
-     *        the class or activity where the log call occurs.
      * @param tr An exception to log
      * @return The number of bytes written.
      */
