@@ -48,6 +48,15 @@ public abstract class JRecyclerAdapter<VH extends JRecyclerAdapter.JViewHolder, 
         this.dataList = dataList;
         this.onItemClickListener = onItemClickListener;
     }
+    public JRecyclerAdapter(Context ctx, ArrayList<O> dataList, JRecyclerAdapterInterface.OnItemLongClickListener onItemLongClickListener) {
+        if (null == dataList) {
+            throw new IllegalArgumentException(
+                    "DataList must not be null");
+        }
+        this.ctx = ctx;
+        this.dataList = dataList;
+        this.onItemLongClickListener = onItemLongClickListener;
+    }
 
     public JRecyclerAdapter(Context ctx, ArrayList<O> dataList) {
         if (null == dataList) {
