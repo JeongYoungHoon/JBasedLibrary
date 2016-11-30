@@ -6,7 +6,7 @@ publish {
     artifactId = 'JBasedLibrary'
     publishVersion = '2.0.0'
     desc = ''
-    website = 'https://github.com/JeongYoungHoon/TansanLibrary'
+    website = 'https://github.com/JeongYoungHoon/JBasedLibrary'
     issueTracker = "${website}/issues"
     repository = "${website}.git"
 }
