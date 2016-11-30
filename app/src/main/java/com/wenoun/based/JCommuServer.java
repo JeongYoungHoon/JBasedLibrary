@@ -225,6 +225,12 @@ public class JCommuServer extends AsyncTask<String, Void, Message> {
     public JCommuServer addParamUTF8(String key, String value) {
         return addParam(key, value, "UTF-8");
     }
+    public JCommuServer addParamUTF8(String key, int value) {
+        return addParam(key, value, "UTF-8");
+    }
+    public JCommuServer addParamUTF8(String key, long value) {
+        return addParam(key, value, "UTF-8");
+    }
 
     public JCommuServer addParam(String key, String $value, String charSet) {
         String value = $value;
@@ -232,6 +238,36 @@ public class JCommuServer extends AsyncTask<String, Void, Message> {
             value = URLEncoder.encode(value, charSet);
         } catch (Exception e) {
             value = $value;
+        }
+        this.url = this.url + "&" + key + "=" + value;
+        return this;
+    }
+    public JCommuServer addParam(String key, int $value, String charSet) {
+        String value = String.valueOf($value);
+        try {
+            value = URLEncoder.encode(value, charSet);
+        } catch (Exception e) {
+            value = String.valueOf($value);
+        }
+        this.url = this.url + "&" + key + "=" + value;
+        return this;
+    }
+    public JCommuServer addParam(String key, long $value, String charSet) {
+        String value = String.valueOf($value);
+        try {
+            value = URLEncoder.encode(value, charSet);
+        } catch (Exception e) {
+            value = String.valueOf($value);
+        }
+        this.url = this.url + "&" + key + "=" + value;
+        return this;
+    }
+    public JCommuServer addParam(String key, float $value, String charSet) {
+        String value = String.valueOf($value);
+        try {
+            value = URLEncoder.encode(value, charSet);
+        } catch (Exception e) {
+            value = String.valueOf($value);
         }
         this.url = this.url + "&" + key + "=" + value;
         return this;

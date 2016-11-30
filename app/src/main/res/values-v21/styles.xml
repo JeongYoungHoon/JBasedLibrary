@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="com.wenoun.JTheme" parent="com.wenoun.JTheme.Base">
+        <item name="android:actionBarSize">50dip</item>
+        <item name="actionBarSize">50dip</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:windowAllowReturnTransitionOverlap">true</item>
+        <item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
+        <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
+    </style>
+
+    <style name="com.wenoun.JTheme.NoStatus" parent="com.wenoun.JTheme.Base">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name="com.wenoun.JTranslucentTheme" parent="Theme.AppCompat.Translucent">
+        <item name="android:windowDrawsSystemBarBackgrounds" tools:targetApi="21">true</item>
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+</resources>
