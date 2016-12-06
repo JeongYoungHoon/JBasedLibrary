@@ -5,7 +5,10 @@ package com.wenoun.based.view;
  */
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.text.Editable;
@@ -36,6 +39,7 @@ public class JClearSearchText extends AutoCompleteTextView implements TextWatche
 
         }
     };
+    private boolean isSearchIconBack=true;
     private OnClickListener onSearchListener=new OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -44,16 +48,26 @@ public class JClearSearchText extends AutoCompleteTextView implements TextWatche
     };
     public JClearSearchText(final Context context) {
         super(context);
+
         init();
     }
     public JClearSearchText(final Context context, final AttributeSet attrs) {
         super(context, attrs);
+        getAttrs(attrs);
         init();
     }
     public JClearSearchText(final Context context, final AttributeSet attrs, final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        getAttrs(attrs,defStyleAttr);
         init();
     }
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public JClearSearchText(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        getAttrs(attrs,defStyleAttr,defStyleRes);
+        init();
+    }
+
     @Override
     public void setOnFocusChangeListener(OnFocusChangeListener onFocusChangeListener) {
         this.onFocusChangeListener = onFocusChangeListener;
@@ -131,14 +145,41 @@ public class JClearSearchText extends AutoCompleteTextView implements TextWatche
     }
     private void setClearIconVisible(boolean visible) {
         clearDrawable.setVisible(visible, false);
-        setCompoundDrawables(null, null, visible ? clearDrawable : searchDrawable, null);
+        setCompoundDrawables(isSearchIconBack?null:searchDrawable, null, visible ? clearDrawable : isSearchIconBack?searchDrawable:null, null);
     }
     private void setSearchIconVisible(boolean visible) {
         searchDrawable.setVisible(visible, false);
-        setCompoundDrawables(null,null,  visible ? searchDrawable : null,  null);
+        setCompoundDrawables(isSearchIconBack?null:searchDrawable,null,  visible ? isSearchIconBack?searchDrawable:null: null,  null);
+    }
+
+    private void getAttrs(AttributeSet attrs) {
+        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.JFloatingActionButton);
+
+        setTypeArray(typedArray);
+    }
+
+
+    private void getAttrs(AttributeSet attrs, int defStyle) {
+        getAttrs(attrs, defStyle,0);
+
+    }
+    private void getAttrs(AttributeSet attrs, int defStyle, int defStyleRes) {
+        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.JFloatingActionButton, defStyle, defStyleRes);
+        setTypeArray(typedArray);
+
+    }
+
+
+    private void setTypeArray(TypedArray typedArray) {
+
+        isSearchIconBack = typedArray.getBoolean(R.styleable.JClearSearchText_searchIconLeft, true);
+        typedArray.recycle();
+
     }
     public void setOnClearClickListener(OnClickListener listener){
         onClearListener=listener;
     }
     public void setOnSearchListener(OnClickListener listener){onSearchListener=listener;}
+    public boolean isSearchIconBack(){return isSearchIconBack;}
+    public void setSearchIconBack(boolean isSearchIconBack){this.isSearchIconBack=isSearchIconBack;}
 }

@@ -33,4 +33,7 @@
         <attr name="badgeText" format="string"/>
         <attr name="badgeUsable" format="boolean"/>
     </declare-styleable>
+    <declare-styleable name="JClearSearchText">
+        <attr name="searchIconLeft" format="boolean"/>
+    </declare-styleable>
 </resources>

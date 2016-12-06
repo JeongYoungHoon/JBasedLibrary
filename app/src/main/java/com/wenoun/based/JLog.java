@@ -57,6 +57,16 @@ public final class JLog{
     }
 
     /**
+     * Send a {@link #VERBOSE} log message and log the exception.
+     * @param msg The message you would like logged.
+     * @param tr An exception to log
+     * @return The number of bytes written.
+     */
+    public static int v(Throwable tr) {
+        return Log.v(TAG,"error",tr);
+    }
+
+    /**
      * Send a {@link #DEBUG} log message.
      * @param msg The message you would like logged.
      * @return The number of bytes written.
@@ -76,6 +86,15 @@ public final class JLog{
     }
 
     /**
+     * Send a {@link #DEBUG} log message and log the exception.
+     * @param tr An exception to log
+     * @return The number of bytes written.
+     */
+    public static int d(Throwable tr) {
+        return Log.d(TAG,"error",tr);
+    }
+
+    /**
      * Send an {@link #INFO} log message.
      * @param msg The message you would like logged.
      * @return The number of bytes written.
@@ -92,6 +111,15 @@ public final class JLog{
      */
     public static int i(String msg, Throwable tr) {
         return Log.i(TAG,msg,tr);
+    }
+
+    /**
+     * Send a {@link #INFO} log message and log the exception.
+     * @param tr An exception to log
+     * @return The number of bytes written.
+     */
+    public static int i(Throwable tr) {
+        return Log.i(TAG,"error",tr);
     }
 
     /**
