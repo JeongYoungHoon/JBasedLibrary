@@ -5,6 +5,7 @@ package com.wenoun.based.view;
  */
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
@@ -24,6 +25,7 @@ import com.wenoun.based.R;
  */
 public class JClearEditText extends AutoCompleteTextView implements TextWatcher, View.OnTouchListener, View.OnFocusChangeListener {
     private Drawable clearDrawable;
+    private Drawable leftDrawable=null;
     private OnFocusChangeListener onFocusChangeListener;
     private OnTouchListener onTouchListener;
     private OnClickListener onClearListener=new OnClickListener() {
@@ -107,8 +109,24 @@ public class JClearEditText extends AutoCompleteTextView implements TextWatcher,
     }
     private void setClearIconVisible(boolean visible) {
         clearDrawable.setVisible(visible, false);
-        setCompoundDrawables(null, null, visible ? clearDrawable : null, null);
+        setCompoundDrawables(leftDrawable.isVisible()?leftDrawable:null, null, visible ? clearDrawable : null, null);
     }
+    public void setLeftIconVisible(boolean visible){
+        if(null!=leftDrawable) leftDrawable.setVisible(visible,false);
+    }
+
+    public void setLeftDrawable(int resId){
+        setLeftDrawable(resId,null);
+    }
+    public void setLeftDrawable(int resId, ColorStateList colorStateList){
+        Drawable tempDrawable = ContextCompat.getDrawable(getContext(), resId);
+        leftDrawable = DrawableCompat.wrap(tempDrawable);
+        if(null!=colorStateList)
+            DrawableCompat.setTintList(leftDrawable,colorStateList);
+        int dip24= JUtil.dpToPx(getContext(),24);
+        leftDrawable.setBounds(0, 0, dip24,dip24);
+    }
+    public Drawable getLeftDrawable(){return this.leftDrawable;}
     public void setOnClearClickListener(OnClickListener listener){
         onClearListener=listener;
     }

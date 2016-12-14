@@ -156,6 +156,9 @@ public class JActivity extends AppCompatActivity {
     public void goBack(View v){
         onBackPressed();
     }
+    public void onBack(View v){
+        onBackPressed();
+    }
 
 
     public void regReceiver(final BroadcastReceiver receiver, final IntentFilter filter){

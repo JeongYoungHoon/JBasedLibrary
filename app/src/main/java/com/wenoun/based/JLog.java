@@ -58,7 +58,6 @@ public final class JLog{
 
     /**
      * Send a {@link #VERBOSE} log message and log the exception.
-     * @param msg The message you would like logged.
      * @param tr An exception to log
      * @return The number of bytes written.
      */
