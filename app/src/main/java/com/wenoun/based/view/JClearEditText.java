@@ -109,7 +109,7 @@ public class JClearEditText extends AutoCompleteTextView implements TextWatcher,
     }
     private void setClearIconVisible(boolean visible) {
         clearDrawable.setVisible(visible, false);
-        setCompoundDrawables(leftDrawable.isVisible()?leftDrawable:null, null, visible ? clearDrawable : null, null);
+        setCompoundDrawables(null!=leftDrawable?leftDrawable.isVisible()?leftDrawable:null:null, null, visible ? clearDrawable : null, null);
     }
     public void setLeftIconVisible(boolean visible){
         if(null!=leftDrawable) leftDrawable.setVisible(visible,false);
