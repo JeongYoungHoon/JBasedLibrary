@@ -113,6 +113,7 @@ public class JClearEditText extends AutoCompleteTextView implements TextWatcher,
     }
     public void setLeftIconVisible(boolean visible){
         if(null!=leftDrawable) leftDrawable.setVisible(visible,false);
+        setCompoundDrawables(null!=leftDrawable?leftDrawable.isVisible()?leftDrawable:null:null, null, clearDrawable.isVisible() ? clearDrawable : null, null);
     }
 
     public void setLeftDrawable(int resId){
@@ -125,6 +126,7 @@ public class JClearEditText extends AutoCompleteTextView implements TextWatcher,
             DrawableCompat.setTintList(leftDrawable,colorStateList);
         int dip24= JUtil.dpToPx(getContext(),24);
         leftDrawable.setBounds(0, 0, dip24,dip24);
+        setLeftIconVisible(true);
     }
     public Drawable getLeftDrawable(){return this.leftDrawable;}
     public void setOnClearClickListener(OnClickListener listener){
