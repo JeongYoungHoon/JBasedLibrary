@@ -1,16 +1,22 @@
 package com.wenoun.based.v4;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.wenoun.based.JActivity;
+import com.wenoun.based.JError;
 import com.wenoun.based.JUtil;
 
 //import android.app.Fragment;
@@ -108,9 +114,53 @@ public abstract class JFragment extends Fragment {
             parentAct.finish();
     }
     public void Log(String msg){
-        Log.d("Test,"+getClass().getSimpleName(),msg);
+        Log.d("JTest,"+getClass().getSimpleName(),msg);
+    }
+    public void Log(JError error){
+        Log.d("JTest,"+getClass().getSimpleName(),error.toString());
+    }
+    public void Log(Exception e){Log.e("JTest"+getClass().getSimpleName(),"Exception : ",e);}
+    public void showProgressDialog(String msg){
+        try {
+            ((JActivity) parentAct).showProgressDialog(msg);
+        }catch(ClassCastException cce){Log(cce);}
+    }
+    public void showProgressDialog(){
+        showProgressDialog("");
+    }
+    public void dismissProgressDialog(){
+        try {
+            ((JActivity) parentAct).dismissProgressDialog();
+        }catch(ClassCastException cce){Log(cce);}
+    }
+    public Dialog getProgressDialog(final String msg) {
+        try {
+            return ((JActivity) parentAct).getProgressDialog(msg);
+        } catch (ClassCastException cce) {
+            Log(cce);
+            return null;
+        }
+    }
+
+    public Dialog getProgressDialog(){
+        return getProgressDialog("");
     }
     public void hideSoftKeyboard(View view){
         JUtil.hideSoftKeyboard(ctx,view);
+    }
+    public void regReceiver(final BroadcastReceiver receiver, final IntentFilter filter){
+        try {
+            LocalBroadcastManager.getInstance(ctx).registerReceiver(receiver, filter);
+        }catch (Exception e){
+            Log(e);
+        }
+    }
+
+    public void unregReceiver(final BroadcastReceiver receiver){
+        try{
+            LocalBroadcastManager.getInstance(ctx).unregisterReceiver(receiver);
+        }catch(Exception e){
+            Log(e);
+        }
     }
 }

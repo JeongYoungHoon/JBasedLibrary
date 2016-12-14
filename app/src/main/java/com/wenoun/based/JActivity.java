@@ -133,6 +133,9 @@ public class JActivity extends AppCompatActivity {
         return ProgressDialog.show(ctx,"",
                 msg,true);
     }
+    public Dialog getProgressDialog(){
+        return getProgressDialog("");
+    }
 
     public void showProgressDialog(){
         showProgressDialog("");

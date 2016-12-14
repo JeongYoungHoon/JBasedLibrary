@@ -4,7 +4,7 @@ publish {
     userOrg = 'jeyechoo'
     groupId = 'com.wenoun'
     artifactId = 'JBasedLibrary'
-    publishVersion = '2.1.4'
+    publishVersion = '2.1.6'
     desc = ''
     website = 'https://github.com/JeongYoungHoon/JBasedLibrary'
     issueTracker = "${website}/issues"

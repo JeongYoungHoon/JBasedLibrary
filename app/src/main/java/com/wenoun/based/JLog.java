@@ -47,6 +47,15 @@ public final class JLog{
     }
 
     /**
+     * Send a {@link #VERBOSE} log message.
+     * @param error The message you would like logged.
+     * @return The number of bytes written.
+     */
+    public static int v(JError error) {
+        return Log.v(TAG,error.toString());
+    }
+
+    /**
      * Send a {@link #VERBOSE} log message and log the exception.
      * @param msg The message you would like logged.
      * @param tr An exception to log
@@ -72,6 +81,15 @@ public final class JLog{
      */
     public static int d(String msg) {
         return Log.d(TAG,msg);
+    }
+
+    /**
+     * Send a {@link #DEBUG} log message.
+     * @param error The message you would like logged.
+     * @return The number of bytes written.
+     */
+    public static int d(JError error) {
+        return Log.d(TAG,error.toString());
     }
 
     /**
@@ -103,6 +121,15 @@ public final class JLog{
     }
 
     /**
+     * Send a {@link #INFO} log message.
+     * @param error The message you would like logged.
+     * @return The number of bytes written.
+     */
+    public static int i(JError error) {
+        return Log.i(TAG,error.toString());
+    }
+
+    /**
      * Send a {@link #INFO} log message and log the exception.
      * @param msg The message you would like logged.
      * @param tr An exception to log
@@ -131,6 +158,15 @@ public final class JLog{
     }
 
     /**
+     * Send a {@link #WARN} log message.
+     * @param error The message you would like logged.
+     * @return The number of bytes written.
+     */
+    public static int w(JError error) {
+        return Log.w(TAG,error.toString());
+    }
+
+    /**
      * Send a {@link #WARN} log message and log the exception.
      * @param msg The message you would like logged.
      * @param tr An exception to log
@@ -156,6 +192,15 @@ public final class JLog{
      */
     public static int e(String msg) {
         return Log.e(TAG,msg);
+    }
+
+    /**
+     * Send a {@link #ERROR} log message.
+     * @param error The message you would like logged.
+     * @return The number of bytes written.
+     */
+    public static int e(JError error) {
+        return Log.e(TAG,error.toString());
     }
 
     /**
