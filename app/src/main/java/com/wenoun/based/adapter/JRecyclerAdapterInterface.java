@@ -12,4 +12,12 @@ public class JRecyclerAdapterInterface {
     public interface OnItemLongClickListener{
         public boolean onItemLongClick(View view, int position);
     }
+    public interface EndlessScrollListener {
+        /**
+         * Loads more data.
+         * @param position
+         * @return true loads data actually, false otherwise.
+         */
+        boolean onLoadMore(int position);
+    }
 }

@@ -21,12 +21,21 @@ public abstract class JRecyclerAdapter<VH extends JRecyclerAdapter.JViewHolder, 
 
         }
     };
+
     private JRecyclerAdapterInterface.OnItemLongClickListener onItemLongClickListener=new JRecyclerAdapterInterface.OnItemLongClickListener() {
         @Override
         public boolean onItemLongClick(View view, int position) {
             return false;
         }
     };
+    private JRecyclerAdapterInterface.EndlessScrollListener endlessScrollListener=null;
+    public JRecyclerAdapterInterface.EndlessScrollListener getEndlessScrollListener() {
+        return endlessScrollListener;
+    }
+
+    public void setEndlessScrollListener(JRecyclerAdapterInterface.EndlessScrollListener endlessScrollListener) {
+        this.endlessScrollListener = endlessScrollListener;
+    }
 
     public JRecyclerAdapter(Context ctx, ArrayList<O> dataList, JRecyclerAdapterInterface.OnItemClickListener onItemClickListener, JRecyclerAdapterInterface.OnItemLongClickListener onItemLongClickListener) {
         if (null == dataList) {
@@ -82,6 +91,11 @@ public abstract class JRecyclerAdapter<VH extends JRecyclerAdapter.JViewHolder, 
                 return onItemLongClickListener.onItemLongClick(view,itemPosition);
             }
         });
+        if(position == getItemCount() - 1) {
+            if(null!=endlessScrollListener ) {
+                endlessScrollListener.onLoadMore(position);
+            }
+        }
         onBindJViewHolder(holder, position);
     }
     public abstract void onBindJViewHolder(VH holder,int position);
@@ -99,6 +113,7 @@ public abstract class JRecyclerAdapter<VH extends JRecyclerAdapter.JViewHolder, 
     public int getItemCount() {
         return dataList.size();
     }
+
 
     public static class JViewHolder extends RecyclerView.ViewHolder{
         View itemView=null;

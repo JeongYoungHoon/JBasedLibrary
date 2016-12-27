@@ -3,6 +3,7 @@ package com.wenoun.based;
 import android.app.Dialog;
 import android.os.AsyncTask;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
@@ -131,7 +132,7 @@ public class JCommuServer extends AsyncTask<String, Void, Message> {
     }
 
     public OnCommuListener checkHandler = null;
-    protected Handler handler = new Handler() {
+    protected Handler handler = new Handler(Looper.getMainLooper()) {
         /**
          * Subclasses must implement this to receive messages.
          *
