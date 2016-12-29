@@ -128,6 +128,7 @@ public class JActivity extends AppCompatActivity {
     public void hideSoftKeyboard(View view){
         JUtil.hideSoftKeyboard(ctx,view);
     }
+    public void showSoftKeyboard(View view){JUtil.showSoftKeyboard(ctx,view);}
 
     public Dialog getProgressDialog(final String msg){
         return ProgressDialog.show(ctx,"",

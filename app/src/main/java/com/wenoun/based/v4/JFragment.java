@@ -148,6 +148,7 @@ public abstract class JFragment extends Fragment {
     public void hideSoftKeyboard(View view){
         JUtil.hideSoftKeyboard(ctx,view);
     }
+    public void showSoftKeyboard(View view){JUtil.showSoftKeyboard(ctx,view);}
     public void regReceiver(final BroadcastReceiver receiver, final IntentFilter filter){
         try {
             LocalBroadcastManager.getInstance(ctx).registerReceiver(receiver, filter);

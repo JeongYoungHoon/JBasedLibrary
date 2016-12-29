@@ -21,6 +21,11 @@ public class JUtil {
         imm.hideSoftInputFromWindow(view.getApplicationWindowToken(), 0);
     }
 
+    public static final void showSoftKeyboard(Context ctx,View view){
+        InputMethodManager imm = (InputMethodManager) ctx.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInputFromInputMethod(view.getApplicationWindowToken(), InputMethodManager.SHOW_FORCED);
+    }
+
     public static final boolean isNeedsVersionUpdate(final String mVersion, final String rVersion){
         final String[] mVer=mVersion.split("\\.");
         final String[] rVer=rVersion.split("\\.");
