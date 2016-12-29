@@ -26,11 +26,6 @@ public class JUtil {
         imm.showSoftInputFromInputMethod(view.getApplicationWindowToken(), InputMethodManager.SHOW_FORCED);
     }
 
-    public static final boolean isShowingSoftKeyboard(Context ctx,View view){
-        final SoftKeyboardStateWatcher watcher=new SoftKeyboardStateWatcher(ctx,view);
-        return watcher.isSoftKeyboardOpened();
-    }
-
     public static final boolean isNeedsVersionUpdate(final String mVersion, final String rVersion){
         final String[] mVer=mVersion.split("\\.");
         final String[] rVer=rVersion.split("\\.");
