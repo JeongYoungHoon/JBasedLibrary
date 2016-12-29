@@ -27,7 +27,7 @@ public class JUtil {
     }
 
     public static final boolean isShowingSoftKeyboard(Context ctx,View view){
-        SoftKeyboardStateWatcher watcher=new SoftKeyboardStateWatcher(ctx,view);
+        final SoftKeyboardStateWatcher watcher=new SoftKeyboardStateWatcher(ctx,view);
         return watcher.isSoftKeyboardOpened();
     }
 
