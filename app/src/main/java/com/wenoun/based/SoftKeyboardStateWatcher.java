@@ -26,13 +26,37 @@ public class SoftKeyboardStateWatcher implements ViewTreeObserver.OnGlobalLayout
     private Context ctx=null;
 
     public SoftKeyboardStateWatcher(Context ctx,View rootView) {
-        this(ctx,rootView, false);
+        this(ctx, rootView, false, new SoftKeyboardStateListener() {
+            @Override
+            public void onSoftKeyboardOpened(int keyboardHeightInPx) {
+
+            }
+
+            @Override
+            public void onSoftKeyboardClosed() {
+
+            }
+        });
+    }
+    public SoftKeyboardStateWatcher(Context ctx,View rootView,boolean isSoftKeyboardVisible) {
+        this(ctx, rootView, isSoftKeyboardVisible, new SoftKeyboardStateListener() {
+            @Override
+            public void onSoftKeyboardOpened(int keyboardHeightInPx) {
+
+            }
+
+            @Override
+            public void onSoftKeyboardClosed() {
+
+            }
+        });
     }
 
-    public SoftKeyboardStateWatcher(Context ctx,View rootView, boolean isSoftKeyboardOpened) {
+    public SoftKeyboardStateWatcher(Context ctx,View rootView, boolean isSoftKeyboardOpened, SoftKeyboardStateListener listener) {
         this.ctx=ctx;
         this.rootView = rootView;
         this.isSoftKeyboardVisible = isSoftKeyboardOpened;
+        this.listener=listener;
         rootView.getViewTreeObserver().addOnGlobalLayoutListener(this);
     }
 
